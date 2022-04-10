@@ -1,1 +1,64 @@
+@use 'themes' as *;
+
+@use '@nebular/theme/styles/globals' as *;
+
+@include nb-install() {
+  @include nb-theme-global();
+};
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//margins 
+.margin-default {
+  margin: 16px !important;
+}
+
+.mg-neg-16 {
+  margin-top: -16px !important;
+}
+
+//width 
+.width {
+  width: 100% !important;
+}
+
+.width-50 {
+  width: 50% !important;
+}
+
+.width-33 {
+  width: 33% !important;
+}
+
+//buttons
+.btn-55 {
+  height: 55px !important;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+.padding {
+  padding: 16px;
+}
+
+.NgxEditor__Content {
+  min-height: 200px !important;
+}
+
+.float-left {
+  float: left !important;
+}
+.margin-top {
+  margin-top: 16px !important;
+}
+
+.flex-left {
+  display: flex;
+  justify-content: end;
+}

@@ -1,0 +1,122 @@
+<h3 class="text-center"><b>CADASTRAR NOVA DENÚNCIA</b></h3>
+
+<div class="grid">
+    <div class="row">
+        <div class="col">
+            <mat-checkbox (change)="isAnonimo($event)" style="margin-bottom: 16px;">Marcar denunciante como anônimo?
+            </mat-checkbox>
+        </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="width" appearance="fill">
+                    <mat-label>NOME COMPLETO</mat-label>
+                    <input matInput autocomplete="off" formControlName="nome">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="width" appearance="fill">
+                    <mat-label>APELIDO</mat-label>
+                    <input matInput autocomplete="off" formControlName="apelido">
+                    <mat-icon matSuffix>insert_emoticon</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field class="width" appearance="fill">
+                    <mat-label>RG</mat-label>
+                    <input matInput mask="0000000" formControlName="rg" autocomplete="off">
+                    <mat-icon matSuffix>how_to_reg</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <mat-form-field class="width" appearance="fill">
+                    <mat-label>CPF</mat-label>
+                    <input matInput mask="000.000.000-00" autocomplete="off" formControlName="cpf">
+                    <mat-icon matSuffix>list_alt</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <mat-form-field class="width" appearance="fill">
+                    <mat-label>CONTATO</mat-label>
+                    <input matInput mask="(00)00000-0000" autocomplete="off" formControlName="contato">
+                    <mat-icon matSuffix>settings_phone</mat-icon>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <mat-form-field class="width" appearance="fill">
+                <mat-label>ENDEREÇO</mat-label>
+                <input matInput autocomplete="off" formControlName="endereco">
+                <mat-icon matSuffix>maps</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="width" appearance="fill">
+                    <mat-label>DATA DA DENÚNCIA</mat-label>
+                    <input matInput mask="00/00/0000" [leadZeroDateTime]="true" autocomplete="off"
+                        formControlName="data_denuncia">
+                    <mat-icon matSuffix>calendar_today</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="col">
+                <mat-form-field class="width" appearance="fill">
+                    <mat-label>PRIORIDADE</mat-label>
+                    <select matNativeControl required formControlName="prioridade">
+                        <option value="ALTA">ALTA</option>
+                        <option value="MÉDIA">MÉDIA</option>
+                        <option value="BAIXA">BAIXA</option>
+                    </select>
+                    <!-- <mat-select>
+                    <mat-option>ALTA</mat-option>
+                    <mat-option>MÉDIA</mat-option>
+                    <mat-option>BAIXA</mat-option>
+                </mat-select> -->
+                </mat-form-field>
+            </div>
+
+            <div class="col">
+                <mat-form-field class="width" appearance="fill">
+                    <mat-label>SERVIDOR RESPONSÁVEL</mat-label>
+                    <input readonly="" formControlName="servidor_responsavel" matInput autocomplete="off">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="width">
+                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                    <ngx-editor formControlName="descricao_denuncia" [editor]="editor"
+                        placeholder="DESCREVA A DENÚNCIA COMPLETA"> </ngx-editor>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 16px" class="row">
+            <div class="col flex-left">
+                <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">CADASTRAR</button>
+                <button (click)="closeModal()" mat-raised-button>CANCELAR</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+    <p style="color: white"> Cadastrando... </p>
+</ngx-spinner>

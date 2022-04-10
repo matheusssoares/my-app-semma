@@ -1,0 +1,26 @@
+<nb-layout>
+    <nb-layout-header fixed>
+        <div class="content-header">
+            <img class="img-logo" src="assets/img/semma-logo.png" alt="" srcset="">
+        </div>
+        <div class="middle">
+            <div class="exit">
+                <button mat-raised-button color="warn">Desconectar</button>
+            </div>
+        </div>
+    </nb-layout-header>
+    
+    <nb-layout-footer>
+        <p>Desenvolvido por: <b>Matheus Soares</b> </p>
+    </nb-layout-footer>
+    <nb-layout-column>
+        <router-outlet></router-outlet>
+    </nb-layout-column>
+    
+    <nb-sidebar>
+        <nb-card class="no-border">
+            <nb-menu [items]="items">
+            </nb-menu>
+        </nb-card>
+    </nb-sidebar>
+</nb-layout>

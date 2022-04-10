@@ -1,0 +1,35 @@
+<div class="container">
+    <app-header-section [title]="'DENÚNCIAS'" [action]="'denuncias'" [button]="'NOVA DENÚNCIA'"></app-header-section>
+</div>
+
+<nb-card style="margin: 14px" class="padding">
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+      <thead>
+        <tr>
+          <th>PROTOCOLO</th>
+          <th>DENUNCIANTE</th>
+          <th>DATA</th>
+          <th>CONTATO</th>
+          <th>PRIORIDADE</th>
+          <th>STATUS</th>
+          <th>AÇÕES</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of dados">
+            <td>{{ item.protocolo }}</td>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.data_denuncia }}</td>
+            <td>{{ item.contato}}</td>
+            <td>ALTA</td>
+            <td><b class="cinza">AGUARDANDO</b></td>
+            <td>TESTE</td>
+            
+          </tr>
+      </tbody>
+    </table>
+  </nb-card>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+    <p style="color: white"> Aguarde... </p>
+</ngx-spinner>

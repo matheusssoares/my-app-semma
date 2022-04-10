@@ -1,0 +1,55 @@
+<nb-layout>
+    <nb-layout-column>
+        <div class="container">
+            <div class="form">
+                <div class="minha-logo">
+                    <img class="logo" src="assets/img/semma-logo.png" alt="">
+                </div>
+
+                <div class="title-div">
+                    <h3 style="text-align: center; font-weight: bold; ">SISTEMA DE LOGIN </h3>
+                </div>
+                <form [formGroup]="form" (ngSubmit)="login()">
+
+                    <div class="inputs-div">
+                        <div class="margin-default">
+                            <mat-form-field class="width" appearance="fill">
+                                <mat-label>Insira seu email</mat-label>
+                                <input autofocus autocomplete="off" formControlName="email" matInput
+                                    placeholder="Email">
+                                <mat-icon matSuffix>email</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="inputs-div mg-neg-16">
+                        <div class="margin-default">
+                            <mat-form-field class="width" appearance="fill">
+                                <mat-label>Insira sua senha</mat-label>
+                                <input type="password" matInput formControlName="pass" placeholder="Senha">
+                                <mat-icon matSuffix>lock</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="inputs-div mg-neg-16">
+                        <p style="float: right; margin-right: 16px; margin-top: -10px; cursor: pointer;">Esqueci minha
+                            senha</p>
+                    </div>
+
+                    <div class="inputs-div">
+                        <div class="margin-default">
+                            <button type="submit" [disabled]="form.invalid" class="width btn-55" mat-raised-button
+                                color="primary">LOGIN</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple"
+                [fullScreen]="true">
+                <p style="color: white"> Aguarde... </p>
+            </ngx-spinner>
+        </div>
+    </nb-layout-column>
+</nb-layout>
