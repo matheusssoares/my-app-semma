@@ -1,0 +1,67 @@
+<h3 class="text-center"><b>CADASTRAR NOVO USUÁRIO</b></h3>
+
+<div class="grid">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row">
+          <div class="col">
+              <mat-form-field class="width" appearance="fill">
+                  <mat-label>NOME COMPLETO</mat-label>
+                  <input class="uppercase" matInput autocomplete="off" formControlName="nome">
+                  <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+              <div *ngIf="f.nome.touched && f.nome.invalid">
+                <p style="color: red; font-size: 10px; margin-top: -16px;" *ngIf="f.nome.errors">Campo nome é obrigatório e precisa ter no mínimo 6 caracteres.</p>
+            </div>
+          </div>          
+      </div>
+
+      <div class="row">
+        <div class="col">
+            <mat-form-field class="width" appearance="fill">
+                <mat-label>EMAIL</mat-label>
+                <input matInput autocomplete="off" formControlName="email">
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6">
+              <mat-form-field class="width" appearance="fill">
+                  <mat-label>SENHA</mat-label>
+                  <input matInput [type]="campo" formControlName="password" autocomplete="off">
+                  <mat-icon *ngIf="campo == 'password'" style="cursor: pointer;" (click)="displaySenha(campo)" matSuffix>remove_red_eye</mat-icon>
+                  <mat-icon *ngIf="campo == 'text'" style="cursor: pointer;" (click)="displaySenha(campo)" matSuffix>visibility_off</mat-icon>
+              </mat-form-field>
+              <div *ngIf="f.password.touched && f.password.invalid">
+                <p style="color: red; font-size: 10px; margin-top: -16px;" *ngIf="f.password.errors?.required">Campo senha é obrigatório e precisa ter no mínimo 6 caracteres.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+              <mat-form-field class="width" appearance="fill">
+                  <mat-label>CONFIRMAR SENHA</mat-label>
+                  <input matInput [type]="campoConfirm" autocomplete="off" formControlName="confirm_password">
+                  <mat-icon *ngIf="campoConfirm == 'password'" style="cursor: pointer;" (click)="displayConfirm(campoConfirm)" matSuffix>remove_red_eye</mat-icon>
+                  <mat-icon *ngIf="campoConfirm == 'text'" style="cursor: pointer;" (click)="displayConfirm(campoConfirm)" matSuffix>visibility_off</mat-icon>
+              </mat-form-field>
+              <div *ngIf="f.confirm_password.touched && f.confirm_password.invalid">
+                <p style="color: red; font-size: 10px; margin-top: -16px;" *ngIf="f.confirm_password.errors?.required">Campo obrigatório.</p>
+                <p style="color: red; font-size: 10px; margin-top: -16px;" *ngIf="f.confirm_password.errors?.confirmedValidator">Campo senha e confirmar senha não coincidem.</p>
+            </div>
+        </div>
+        </div>
+
+      <div style="margin-top: 16px" class="row">
+          <div class="col flex-left">
+              <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">CADASTRAR</button>
+              <button type="button" (click)="closeModal()" mat-raised-button>CANCELAR</button>
+          </div>
+      </div>
+
+  </form>
+</div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+  <p style="color: white"> Cadastrando... </p>
+</ngx-spinner>

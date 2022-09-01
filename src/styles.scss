@@ -60,5 +60,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .flex-left {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
 }

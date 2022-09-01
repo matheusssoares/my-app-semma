@@ -8,7 +8,7 @@ import { NgxEditorModule } from 'ngx-editor';
 import { NgxMaskModule } from 'ngx-mask'
 import { DataTablesModule } from "angular-datatables";
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   declarations: [],
   imports: [
@@ -61,7 +61,8 @@ import { BrowserModule } from '@angular/platform-browser';
       },
     }),
     NgxMaskModule.forRoot(),
-    DataTablesModule
+    DataTablesModule,
+    ButtonModule
   ],
   exports: [
     CommonModule,
@@ -75,6 +76,7 @@ import { BrowserModule } from '@angular/platform-browser';
     NgxEditorModule,
     NgxMaskModule,
     DataTablesModule,
+    ButtonModule
   ]
 })
 export class SharedModule { }

@@ -14,7 +14,6 @@ import { AdminModule } from './modules/admin/admin.module';
 
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-
 @NgModule({
   declarations: [
     AppComponent,
