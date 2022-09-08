@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, NbMenuModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, NbMenuModule, NbToastrModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,6 +9,13 @@ import { NgxMaskModule } from 'ngx-mask'
 import { DataTablesModule } from "angular-datatables";
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DialogModule } from 'primeng/dialog';
+import { SplitButtonModule } from 'primeng/splitbutton';
 @NgModule({
   declarations: [],
   imports: [
@@ -22,6 +29,7 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     NbCardModule,
     NbMenuModule.forRoot(), //for root (funcionar menu)
+    TableModule,
     NgxEditorModule.forRoot({
       locals: {
         // menu
@@ -62,7 +70,13 @@ import { ButtonModule } from 'primeng/button';
     }),
     NgxMaskModule.forRoot(),
     DataTablesModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule,
+    NbToastrModule.forRoot(),
+    InputTextModule,
+    ProgressSpinnerModule,
+    DialogModule,
+    SplitButtonModule
   ],
   exports: [
     CommonModule,
@@ -76,7 +90,17 @@ import { ButtonModule } from 'primeng/button';
     NgxEditorModule,
     NgxMaskModule,
     DataTablesModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule,
+    NbToastrModule,
+    TableModule,
+    InputTextModule,
+    ProgressSpinnerModule,
+    DialogModule,
+    SplitButtonModule
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class SharedModule { }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ControllerService } from 'src/app/services/controller.service';
+import { EventSubscriberService } from 'src/app/services/event-subscriber.service';
 import { GlobalService } from 'src/app/services/global.service';
 import { ConfirmedValidator } from 'src/app/utils/validatorPassword';
 
@@ -18,6 +19,7 @@ export class CadastrarUsuariosComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public controller: ControllerService,
+    private eventSub: EventSubscriberService,
     private formBuilder: FormBuilder,
     private global: GlobalService,
     private spinner: NgxSpinnerService,
@@ -40,22 +42,23 @@ export class CadastrarUsuariosComponent implements OnInit {
 
   async submit() {
     this.spinner.show();
-
-    setTimeout(async () => {
       try {
         this.form.value.create_in = new Date();
         let name: string = this.form.value.nome.toLowerCase();
         this.form.value.nome = name.toUpperCase();
-        const authService = await this.controller.createAccount(this.form.value.email, this.form.value.password);
-        if(authService == 'success') {
+        const authService:any = await this.controller.createAccount(this.form.value.email, this.form.value.password);
+        if(authService.message == 'success') {
           delete this.form.value.confirm_password;
-          const validation = await this.controller.create('usuarios', this.form.value, false)
+          this.form.value.key = authService.key;
+          this.form.value.status = true;
+          this.form.value.perfil = 'ADMINISTRADOR';
+          const validation = await this.controller.create('usuarios', this.form.value, this.form.value.key)
           this.spinner.hide();
           if (validation) {
-            await this.global.showSweet('Parabéns!', 'Usuário cadastrado com sucesso!', 'success').then(() => {
-              this.closeModal();
-            })
-  
+            this.closeModal();            
+            //await this.global.showSToast('success', 'Parabéns!', 'Usuário cadastrado.');
+            this.eventSub.setEvent('success_toast');
+            this.eventSub.setEvent('update_usuario');
           }
         }
 
@@ -71,8 +74,6 @@ export class CadastrarUsuariosComponent implements OnInit {
           this.global.showSweet('Opsss!', 'Tivemos um problema interno, favor tente mais tarde.', 'error');
         }
       }
-    }, 2000)
-
   }
 
   async closeModal() {

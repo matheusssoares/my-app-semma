@@ -89,9 +89,11 @@ export class CadastrarDenunciasComponent implements OnInit {
         const validation = await this.controller.create('denuncias', this.form.value, false)
         this.spinner.hide();
         if (validation) {
-          await this.global.showSweet('Parabéns!', 'Sua denúncia foi cadastrada com sucesso!', 'success').then(() => {
+          /* await this.global.showSweet('Parabéns!', 'Sua denúncia foi cadastrada com sucesso!', 'success').then(() => {
             this.closeModal();
-          })
+          }) */
+          this.closeModal();
+         // await this.global.showSToast('success', 'Parabéns!', 'Sua denúncia foi cadastrada com sucesso!');
 
         }
 

@@ -17,8 +17,14 @@ export class ControllerService {
 
   async createAccount(email: string, password: string) {
     return new Promise((resolve, reject) => {
-      this.auth.createUserWithEmailAndPassword(email, password).then(() => {
-        resolve('success');
+      this.auth.createUserWithEmailAndPassword(email, password).then((user) => {
+        //resolve('success');
+        let data = {
+          key: user.user?.uid,
+          message: 'success'
+        };
+
+        resolve(data);
       }).catch((err) => {
         reject(err.code);
       })
@@ -72,5 +78,9 @@ export class ControllerService {
 
   generateKey(): string {
     return this.db.createId();
+  }
+
+  getDataByOrderFull(collection: string, nomeDoCampo: string, ordemLista: any) {
+    return this.db.collection(collection, ref => ref.orderBy(nomeDoCampo, ordemLista)).valueChanges();
   }
 }

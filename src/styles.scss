@@ -66,3 +66,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .uppercase {
   text-transform: uppercase !important;
 }
+
+.product-badge {
+  border-radius: 2px;
+  padding: 0.15em 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+.font-table {
+  font-size: 12px !important;
+}

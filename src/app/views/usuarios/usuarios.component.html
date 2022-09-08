@@ -1,3 +1,50 @@
 <div class="container">
+  <p-toast position="top-right"></p-toast>
   <app-header-section [title]="'USUÁRIOS'" [action]="'usuarios'" [button]="'NOVO USUÁRIO'"></app-header-section>
+ <!--  <button (click)="addSingle()" pButton type="button" label="Click" ></button> -->
+
+ <div class="conteudo-lista">
+  <p-table #dt1 dataKey="id" [value]="usuarios"
+  [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+  currentPageReportTemplate="Mostrando {first} para {last} de {totalRecords} registros" [rowsPerPageOptions]="[10,25,50]"
+  [globalFilterFields]="['nome','email','perfil','create_in']"
+  sortMode="multiple" [loading]="loading" selectionMode="single" [(selection)]="selectedData">
+
+    <ng-template pTemplate="caption">
+      <div class="flex">
+          <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button> -->
+          <span class="p-input-icon-left ml-auto">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Pesquisar" />
+          </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
+            <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+            <th pSortableColumn="perfil">Perfil <p-sortIcon field="perfil"></p-sortIcon></th>
+            <th pSortableColumn="create_in">Cadastro <p-sortIcon field="create_in"></p-sortIcon></th>
+            <th>Ações</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usuario>
+        <tr>
+            <td class="font-table">{{usuario.nome}}</td>
+            <td class="font-table">{{usuario.email}}</td>
+            <td class="font-table"><span [class]="'product-badge status-' + usuario.perfil.toLowerCase()">{{usuario.perfil}}</span></td>
+            <td class="font-table">{{usuario.create_in.toDate() | date: 'dd/MM/yyyy'}}</td>
+            <td>
+                <button pButton pRipple type="button" icon="pi pi-search" class="p-button-sm p-button-rounded p-button-text"></button>
+                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-sm p-button-rounded p-button-danger p-button-text"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+ </div>
 </div>
+
+<!-- <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+  <p style="color: white"> Aguarde... </p>
+</ngx-spinner> -->
