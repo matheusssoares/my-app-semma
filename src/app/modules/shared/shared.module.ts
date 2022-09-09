@@ -10,12 +10,13 @@ import { DataTablesModule } from "angular-datatables";
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { DialogModule } from 'primeng/dialog';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [],
   imports: [
@@ -76,7 +77,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     InputTextModule,
     ProgressSpinnerModule,
     DialogModule,
-    SplitButtonModule
+    SplitButtonModule,
+    ConfirmDialogModule
   ],
   exports: [
     CommonModule,
@@ -97,10 +99,12 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     InputTextModule,
     ProgressSpinnerModule,
     DialogModule,
-    SplitButtonModule
+    SplitButtonModule,
+    ConfirmDialogModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    ConfirmationService
   ]
 })
 export class SharedModule { }

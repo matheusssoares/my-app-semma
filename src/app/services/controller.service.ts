@@ -83,4 +83,27 @@ export class ControllerService {
   getDataByOrderFull(collection: string, nomeDoCampo: string, ordemLista: any) {
     return this.db.collection(collection, ref => ref.orderBy(nomeDoCampo, ordemLista)).valueChanges();
   }
+
+  updateData(collection: string, data: any, id: string) {
+    data.update_in = new Date();
+    return new Promise((resolve, reject) => {
+      this.db.collection(collection).doc(id).update(data).then(() => {
+        resolve('success');
+      }).catch((err) => {
+        console.log(err);
+        reject('error')
+      })
+    })
+  }
+
+  delete(collection: string, key: string) {
+    return new Promise((resolve, reject) => {
+      this.db.collection(collection).doc(key).delete().then(() => {
+        resolve('success');
+      }).catch((err) => {
+        console.log('error =>', err);
+        reject(err);
+      })
+    })
+  }
 }

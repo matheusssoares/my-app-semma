@@ -53,4 +53,10 @@ export class AuthService {
       })
     })
   }
+
+  disableUser(uid: string) {
+   /*  return new Promise((resolve, reject) => {
+      this.auth.updateCurrentUser(user)
+    }) */
+  }
 }

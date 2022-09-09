@@ -1,7 +1,6 @@
 <div class="container">
   <p-toast position="top-right"></p-toast>
   <app-header-section [title]="'USUÁRIOS'" [action]="'usuarios'" [button]="'NOVO USUÁRIO'"></app-header-section>
- <!--  <button (click)="addSingle()" pButton type="button" label="Click" ></button> -->
 
  <div class="conteudo-lista">
   <p-table #dt1 dataKey="id" [value]="usuarios"
@@ -12,10 +11,9 @@
 
     <ng-template pTemplate="caption">
       <div class="flex">
-          <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button> -->
           <span class="p-input-icon-left ml-auto">
               <i class="pi pi-search"></i>
-              <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Pesquisar" />
+              <input style="width: 300px;" pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Pesquisar" />
           </span>
       </div>
     </ng-template>
@@ -36,8 +34,8 @@
             <td class="font-table"><span [class]="'product-badge status-' + usuario.perfil.toLowerCase()">{{usuario.perfil}}</span></td>
             <td class="font-table">{{usuario.create_in.toDate() | date: 'dd/MM/yyyy'}}</td>
             <td>
-                <button pButton pRipple type="button" icon="pi pi-search" class="p-button-sm p-button-rounded p-button-text"></button>
-                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-sm p-button-rounded p-button-danger p-button-text"></button>
+                <button (click)="editar(usuario)" pButton pRipple type="button" icon="pi pi-search" class="p-button-sm p-button-rounded p-button-text"></button>
+                <button (click)="excluir(usuario)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-sm p-button-rounded p-button-danger p-button-text"></button>
             </td>
         </tr>
     </ng-template>
@@ -45,6 +43,9 @@
  </div>
 </div>
 
-<!-- <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
-  <p style="color: white"> Aguarde... </p>
-</ngx-spinner> -->
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+  <ng-template pTemplate="footer">
+      <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+      <button type="button" pButton icon="pi pi-times" label="Não" class="p-button-secondary" (click)="cd.reject()"></button>
+</ng-template>
+</p-confirmDialog>
