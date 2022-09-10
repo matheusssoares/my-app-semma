@@ -106,4 +106,17 @@ export class ControllerService {
       })
     })
   }
+
+  getDataById(collection: string, campo: string, key: string) {
+    return new Promise((resolve, reject) => {
+      this.db.collection(collection, ref => ref.where(campo, '==', key)).valueChanges()
+      .subscribe((data: any) => {
+        if(data.length > 0) {
+          resolve(data);
+        } else {
+          resolve([]);
+        }
+      })
+    })
+  }
 }

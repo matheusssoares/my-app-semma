@@ -17,9 +17,11 @@ export class AuthService {
 
   async login(form: any) {
     return new Promise((resolve, reject) => {
-      this.auth.signInWithEmailAndPassword(form.email, form.pass).then(() => {
-        resolve(true);
+      this.auth.signInWithEmailAndPassword(form.email, form.pass).then((user) => {
+        const user_data = user.user?.uid;
+        resolve(user_data);
       }).catch(async (err) => {
+        reject(err.code);
         this.spinner.hide();
         switch ((err.code)) {
           case 'auth/user-not-found':

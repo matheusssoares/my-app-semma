@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/services/auth.service';
+import { ControllerService } from 'src/app/services/controller.service';
+import { EventSubscriberService } from 'src/app/services/event-subscriber.service';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -13,6 +15,8 @@ export class LoginComponent implements OnInit {
   form = new FormGroup({});
 
   constructor(
+    private controllerService: ControllerService,
+    private eventSub: EventSubscriberService,
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
     private auth: AuthService,
@@ -27,16 +31,27 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
+  async login() {
     this.spinner.show();
-    
-    this.auth.login(this.form.value).then(() => {
-      this.global.router.navigateByUrl('admin');
-    }).catch((e) => {
+
+    try {
+      const buscar_usuario:any = await this.auth.login(this.form.value);
+      if(buscar_usuario) {
+        const validar:any = await this.controllerService.getDataById('usuarios', 'key', buscar_usuario);
+        if (validar) {
+          var data:any = validar[0];
+          this.eventSub.setLocal('userData', data);
+          this.spinner.hide();
+          this.global.router.navigateByUrl('admin');
+        }
+      }
+
+    } catch (err) {
       this.spinner.hide();
-      console.log('deu erro ao logar');      
-    })
-    
+      console.log('deu erro ao logar');
+    }
+
+
   }
 
   async loginIsValid() {

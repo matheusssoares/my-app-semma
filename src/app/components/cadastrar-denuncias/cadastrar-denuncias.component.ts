@@ -18,6 +18,7 @@ export class CadastrarDenunciasComponent implements OnInit {
   denuncia_em = format(new Date(), 'dd/MM/yyyy', { locale: pt });
   html = '';
   editor: any;
+  usuario: any;
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['underline', 'strike'],
@@ -38,6 +39,7 @@ export class CadastrarDenunciasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.editor = new Editor();
     this.emulaForm();
 
