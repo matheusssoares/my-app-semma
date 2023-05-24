@@ -4,6 +4,6 @@
     </div>
 
     <div class="btn-float">
-        <button class="btn-new" mat-raised-button color="primary" (click)="openDialog(action)">{{ button }}</button>
+        <button pButton pRipple [label]="button" class="btn-new p-button-success" (click)="openDialog(action)"></button>
     </div>
 </nb-card>

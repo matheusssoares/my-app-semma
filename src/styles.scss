@@ -6,10 +6,11 @@
   @include nb-theme-global();
 };
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-//margins 
+//margins
 .margin-default {
   margin: 16px !important;
 }
@@ -18,8 +19,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-top: -16px !important;
 }
 
-//width 
-.width {
+//width
+.width, .p-dropdown {
   width: 100% !important;
 }
 
@@ -77,4 +78,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .font-table {
   font-size: 12px !important;
+}
+.product-badge.status-1 {
+  background: #C8E6C9;
+  color: #000;
+}
+.product-badge.status-2 {
+  background: #38d3eb;
+  color: #000;
+}
+.product-badge.status-3 {
+  background: #d70e0e;
+  color: #FFF;
 }

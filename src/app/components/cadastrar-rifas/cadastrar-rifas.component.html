@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="grid">
+    <div class="row">
+      <h3 class="text-center"><b>CADASTRAR NOVA RIFA</b></h3>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form">
+        <div class="row">
+          <div class="col">
+            <p-fileUpload chooseLabel="Adicionar Foto" cancelLabel="Cancelar" [showUploadButton]="false" (onSelect)="onUpload($event)" [multiple]="false" accept="image/*" [maxFileSize]="1000000">
+              <ng-template pTemplate="content">
+                <div *ngIf="uploadedFiles.length == 0">
+                    <p>Adicionar foto da rifa</p>
+                </div>
+                  <ul *ngIf="uploadedFiles.length">
+                      <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                  </ul>
+              </ng-template>
+          </p-fileUpload>
+          </div>
+        </div>
+        <div style="margin-top: 16px" class="row">
+          <div class="col">
+            <label for="titulo">Título</label>
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon">
+                  <i class="pi pi-user"></i>
+              </span>
+              <input id="titulo" pInputText placeholder="Título da Rifa" class="uppercase" formControlName="titulo"/>
+          </div>
+          </div>
+          <div class="col">
+            <label for="tipoSorteio">Tipo de Sorteio</label>
+              <p-dropdown id="tipoSorteio" placeholder="Tipo de Sorteio" class="width" formControlName="tipoSorteio" [options]="tipoSorteio" optionLabel="label"></p-dropdown>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px" class="row">
+          <div class="col">
+            <label for="descricao">Descrição</label>
+            <div class="p-inputgroup">
+              <textarea id="descricao" placeholder="Descrição" formControlName="descricao" rows="3" cols="30" pInputTextarea [autoResize]="true"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px" class="row">
+          <div class="col">
+            <label for="dataInicio">Data de Início</label>
+            <div class="p-inputgroup">
+              <p-calendar id="dataInicio" placeholder="Data de Início" formControlName="dataInicio" class="width" [showTime]="true" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+          </div>
+
+          <div class="col">
+            <label for="dataFinal">Data Final</label>
+            <div class="p-inputgroup">
+              <p-calendar id="dataFinal" placeholder="Data Final" formControlName="dataFim" class="width" [showTime]="true" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+          </div>
+        </div>
+
+          <div style="margin-top: 16px" class="row">
+            <div class="col">
+                <div class="flex-auto">
+                  <label for="numPorBilhete">Números Por Bilhete</label>
+                  <p-inputNumber id="numPorBilhete" inputId="integeronly" formControlName="qtdeNumPorBilhete"> </p-inputNumber>
+              </div>
+            </div>
+
+            <div class="col">
+                <div class="flex-auto">
+                  <label for="precoBilhete">Preço Por Bilhete</label>
+                  <p-inputNumber id="precoBilhete" formControlName="precoBilhete" inputId="currency-br" mode="currency" currency="BRL" locale="pt-BR" currencyDisplay="symbol" [minFractionDigits]="2"></p-inputNumber>
+              </div>
+            </div>
+            <div class="col">
+              <div class="flex-auto">
+                <label for="maxNum">Máximo de números</label>
+                <p-dropdown id="maxNum" placeholder="Quantidade max de números" class="width" formControlName="numMaxBilhete" [options]="maxNums" optionLabel="label"></p-dropdown>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px" class="row">
+            <div class="col">
+              <div class="flex-auto">
+                <label for="tempoExpiracao">Tempo de Expiração</label>
+                <p-calendar id="tempoExpiracao" formControlName="limiteExpiracao" class="width" [showTime]="true" [showIcon]="true" [timeOnly]="true"></p-calendar>
+              </div>
+            </div>
+            <div class="col">
+              <div class="flex-auto">
+                <label for="percent">Percentual Cambista</label>
+                <p-inputNumber id="percent" inputId="integeronly" class="width" formControlName="percentualCambista"> </p-inputNumber>
+               </div>
+            </div>
+            <div class="col">
+              <div class="flex-auto">
+                <label for="qtdeMin">Percentual Mínimo de Bilhetes</label>
+                <p-inputNumber id="qtdeMin" class="width" formControlName="numMinBilhete"> </p-inputNumber>
+               </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px" class="row">
+            <div class="col">
+                <label for="integeronly">Link do grupo no WhatsApp</label>
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">www</span>
+                <input type="text" pInputText placeholder="Link do grupo no WhatsApp" formControlName="linkWhatsApp"/>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px" class="row">
+          <div class="col flex-left">
+              <p-button type="submit" [disabled]="form.invalid" label="CADASTRAR" styleClass="p-button-raised"></p-button>
+              <p-button type="button" (click)="closeModal()" label="CANCELAR" styleClass="p-button-danger"></p-button>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+  <p style="color: white"> Cadastrando... </p>
+</ngx-spinner>

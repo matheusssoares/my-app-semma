@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,15 +15,17 @@ import { AdminModule } from './modules/admin/admin.module';
 
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     LoginModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -30,7 +33,8 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
     AngularFireStorageModule,
     AdminModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

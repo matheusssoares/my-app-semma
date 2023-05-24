@@ -1,0 +1,50 @@
+<div class="conteudo-lista">
+  <div class="btn-voltar">
+    <p-button (click)="voltar()" icon="pi pi-arrow-left" styleClass="p-button-secondary p-button-rounded"></p-button>
+  </div>
+
+  <div class="conteudo">
+    <p-tabView>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText placeholder="Pesquisar" />
+    </span>
+      <p-tabPanel header="TODOS">
+        <div class="bilhetes" *ngFor="let ticket of tickets; let i = index">
+          <p-card class="my-card" [ngClass]="{ 'selected': ticket.isSelected }" (click)="toggleSelection(ticket, i)">
+            <div class="img">
+              <img src="../../../assets/img/bilhete.png" alt="bilhete">
+              <div class="numeros">
+                <p class="linha-superior number-1">{{ ticket.numbers[0].toLocaleString('en-US', { minimumIntegerDigits: 4, useGrouping: false }) }}</p>
+                <p class="linha-superior number-2">{{ ticket.numbers[1].toLocaleString('en-US', { minimumIntegerDigits: 4, useGrouping: false }) }}</p>
+                <p class="linha-inferior number-3">{{ ticket.numbers[2].toLocaleString('en-US', { minimumIntegerDigits: 4, useGrouping: false }) }}</p>
+                <p class="linha-inferior number-2">{{ ticket.numbers[3].toLocaleString('en-US', { minimumIntegerDigits: 4, useGrouping: false }) }}</p>
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="DISPONÍVEIS">
+          <p (click)="verArray()">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+          </p>
+      </p-tabPanel>
+      <p-tabPanel header="RESERVADOS">
+          <p>
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
+              qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+          </p>
+      </p-tabPanel>
+  </p-tabView>
+
+  </div>
+</div>
+<div class="template">
+  <p-sidebar [(visible)]="displaySidebar" position="bottom" [modal]="false" [showCloseIcon]="false">
+    <div class="center text-center">
+      <p-button class="btn-large p-button-rounded p-fluid" [label]="getValueTickes()" icon="pi pi-info-circle" styleClass="p-button-lg p-button-secondary"></p-button>
+      <p-button class="btn-large p-button-rounded p-fluid" label="FINALIZAR" icon="pi pi-check" styleClass="p-button-lg p-button-success"></p-button>
+    </div>
+</p-sidebar>
+</div>

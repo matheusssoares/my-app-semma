@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import format from 'date-fns/format';
 import pt from 'date-fns/locale/pt-BR';
-
+import { finalize } from 'rxjs';
+import firebase from 'firebase/compat/app';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +14,8 @@ export class ControllerService {
 
   constructor(
     private db: AngularFirestore,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    private storage: AngularFireStorage
   ) { }
 
   async createAccount(email: string, password: string) {
@@ -118,5 +121,36 @@ export class ControllerService {
         }
       })
     })
+  }
+
+  uploadFiles(file: any) {
+    return new Promise((resolve, reject) => {
+      const filePath = `imagens/${this.generateKey()}.jpg`;
+
+      // Referência ao local de armazenamento no Firebase
+      const storageRef = this.storage.ref(filePath);
+      const uploadTask = this.storage.upload(filePath, file);
+
+      uploadTask
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe(
+            (url) => {
+              resolve(url);
+            },
+            (error) => {
+              reject('Ocorreu um erro ao obter a URL da imagem.');
+            }
+          );
+        })
+      )
+      .subscribe();
+
+    })
+  }
+
+  async getDataAllRifas(collection: string) {
+    return this.db.collection(collection, ref => ref.orderBy('dataFim', 'desc')).valueChanges();
   }
 }

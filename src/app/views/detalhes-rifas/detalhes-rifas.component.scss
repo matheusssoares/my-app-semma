@@ -1,0 +1,77 @@
+.conteudo {
+  width: 100%;
+  background-color: #FFF;
+  margin-top: 16px;
+  padding: 16px;
+}
+.bilhetes {
+  display: inline-block;
+}
+.image img{
+  width: 200px;
+  height: 400px;
+}
+
+.my-card {
+  display: block;
+  width: auto;
+  border-radius: 15px;
+  margin-top: 16px;
+  margin-right: 16px;
+
+  img {
+    display: block;
+    width: 230px;
+    height: 100px;
+    margin: auto;
+  }
+}
+
+.numeros {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.numeros p {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.linha-superior {
+  display: inline-block;
+  margin-top: -53px;
+}
+
+.linha-inferior {
+  display: inline-block;
+  margin-top: -37px; /* Espaçamento opcional entre as linhas */
+}
+
+.number-1 {
+  position: absolute;
+  margin-left: 118px;
+}
+.number-2 {
+  position: absolute;
+  margin-left: 169px;
+}
+.number-3 {
+  position: absolute;
+  margin-left: 118px;
+}
+
+.selected {
+  border: 2px solid #3B82F6;
+  border-radius: 6px;
+}
+.center {
+  display: flex; justify-content: center; align-items: center;
+}
+.btn-large {
+  width: 300px;
+}
+.p-button.p-button-lg {
+  font-size: 1.25rem;
+  padding: 0.9375rem 1.5625rem;
+  width: 100%;
+}

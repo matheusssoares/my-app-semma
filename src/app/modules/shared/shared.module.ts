@@ -4,7 +4,6 @@ import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, NbMenuMod
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxEditorModule } from 'ngx-editor';
 import { NgxMaskModule } from 'ngx-mask'
 import { DataTablesModule } from "angular-datatables";
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +16,17 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { DialogModule } from 'primeng/dialog';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CardModule } from 'primeng/card';
+import { TabViewModule } from 'primeng/tabview';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { SidebarModule } from 'primeng/sidebar';
 @NgModule({
   declarations: [],
   imports: [
@@ -31,44 +41,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     NbCardModule,
     NbMenuModule.forRoot(), //for root (funcionar menu)
     TableModule,
-    NgxEditorModule.forRoot({
-      locals: {
-        // menu
-        bold: 'Bold',
-        italic: 'Italic',
-        code: 'Code',
-        underline: 'Underline',
-        strike: 'Strike',
-        blockquote: 'Blockquote',
-        bullet_list: 'Bullet List',
-        ordered_list: 'Ordered List',
-        heading: 'Heading',
-        h1: 'Header 1',
-        h2: 'Header 2',
-        h3: 'Header 3',
-        h4: 'Header 4',
-        h5: 'Header 5',
-        h6: 'Header 6',
-        align_left: 'Left Align',
-        align_center: 'Center Align',
-        align_right: 'Right Align',
-        align_justify: 'Justify',
-        text_color: 'Text Color',
-        background_color: 'Background Color',
-        insertLink: 'Insert Link',
-        removeLink: 'Remove Link',
-        insertImage: 'Insert Image',
-
-        // pupups, forms, others...
-        url: 'URL',
-        text: 'Text',
-        openInNewTab: 'Open in new tab',
-        insert: 'Insert',
-        altText: 'Alt Text',
-        title: 'Title',
-        remove: 'Remove',
-      },
-    }),
     NgxMaskModule.forRoot(),
     DataTablesModule,
     ButtonModule,
@@ -78,7 +50,18 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ProgressSpinnerModule,
     DialogModule,
     SplitButtonModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    FileUploadModule,
+    CalendarModule,
+    CheckboxModule,
+    RadioButtonModule,
+    DropdownModule,
+    InputTextareaModule,
+    InputNumberModule,
+    CardModule,
+    TabViewModule,
+    VirtualScrollerModule,
+    SidebarModule
   ],
   exports: [
     CommonModule,
@@ -89,7 +72,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     NbSidebarModule,
     NbCardModule,
     NbMenuModule,
-    NgxEditorModule,
     NgxMaskModule,
     DataTablesModule,
     ButtonModule,
@@ -100,7 +82,18 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ProgressSpinnerModule,
     DialogModule,
     SplitButtonModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    FileUploadModule,
+    CalendarModule,
+    CheckboxModule,
+    RadioButtonModule,
+    DropdownModule,
+    InputTextareaModule,
+    InputNumberModule,
+    CardModule,
+    TabViewModule,
+    VirtualScrollerModule,
+    SidebarModule
   ],
   providers: [
     MessageService,

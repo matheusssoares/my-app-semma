@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    projectId: 'semma-bujaru',
-    appId: '1:52279826511:web:99a93aad8358b08963b23a',
-    storageBucket: 'semma-bujaru.appspot.com',
-    apiKey: 'AIzaSyBtTRs-OvO_mVgSePhVCyslXr2G_mCd7DY',
-    authDomain: 'semma-bujaru.firebaseapp.com',
-    messagingSenderId: '52279826511',
-    measurementId: 'G-EVZ8V94Q21',
+    apiKey: "AIzaSyCa_fqQ2gelJPrT1ggdelKU5u6cTR81yIE",
+    authDomain: "papo-de-rifa.firebaseapp.com",
+    projectId: "papo-de-rifa",
+    storageBucket: "papo-de-rifa.appspot.com",
+    messagingSenderId: "144031644684",
+    appId: "1:144031644684:web:558959b358e62187284229",
+    measurementId: "G-YP8MPQSVH4"
   },
 };
 

@@ -16,36 +16,24 @@ export class AdminComponent implements OnInit {
       icon: 'home-outline',
     },
     {
-      title: 'DENÚNCIAS',
+      title: 'RIFAS/SORTEIOS',
       icon: 'clipboard-outline',
     },
     {
-      title: 'SOLICITAÇÕES',
-      icon: 'volume-up-outline',
+      title: 'COLABORADORES',
+      icon: 'person-done-outline',
     },
     {
-      title: 'FISCALIZAÇÕES',
-      icon: 'search-outline',
+      title: 'CLIENTES',
+      icon: 'smiling-face-outline',
     },
     {
-      title: 'SERVIÇOS',
-      icon: { icon: 'paper-plane-outline', pack: 'eva' },
+      title: 'CONFIGURAÇÕES',
+      icon: { icon: 'settings-outline', pack: 'eva' },
     },
     {
-      title: 'NOTÍCIAS',
+      title: 'SUPORTE',
       icon: { icon: 'message-square-outline', pack: 'eva' },
-    },
-    {
-      title: 'CARGOS',
-      icon: 'lock-outline',
-    },
-    {
-      title: 'FUNCIONÁRIOS',
-      icon: 'people-outline',
-    },
-    {
-      title: 'USUÁRIOS',
-      icon: 'person-outline',
     },
     {
       title: 'RELATÓRIOS',
@@ -56,11 +44,11 @@ export class AdminComponent implements OnInit {
       icon: 'log-out-outline'
     },
   ];
-  
+
   constructor(
     private menu: NbMenuService,
     private global: GlobalService
-  ) { 
+  ) {
     this.menu.onItemClick().subscribe((data: any) => {
       this.navigate(data.item.title);
     })
@@ -71,8 +59,9 @@ export class AdminComponent implements OnInit {
   }
 
   navigate(route: string) {
-   if(route == 'DENÚNCIAS') {
-     this.global.router.navigateByUrl('admin/denuncias');
+    debugger
+   if(route == 'RIFAS/SORTEIOS') {
+     this.global.router.navigateByUrl('admin/rifas');
    } else if (route == 'SOLICITAÇÕES') {
     this.global.router.navigateByUrl('admin/solicitacoes');
    } else if (route == 'FISCALIZAÇÕES'){
@@ -90,7 +79,7 @@ export class AdminComponent implements OnInit {
    } else if (route == 'DESCONECTAR') {
     alert('sair');
    }
-    
+
   }
 
 }

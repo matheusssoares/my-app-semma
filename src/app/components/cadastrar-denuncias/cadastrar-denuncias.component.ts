@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Editor, Toolbar } from 'ngx-editor';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import format from 'date-fns/format';
 import pt from 'date-fns/locale/pt-BR';
@@ -16,19 +15,7 @@ import { GlobalService } from 'src/app/services/global.service';
 export class CadastrarDenunciasComponent implements OnInit {
   form = new FormGroup({});
   denuncia_em = format(new Date(), 'dd/MM/yyyy', { locale: pt });
-  html = '';
-  editor: any;
   usuario: any;
-  toolbar: Toolbar = [
-    ['bold', 'italic'],
-    ['underline', 'strike'],
-    ['code', 'blockquote'],
-    ['ordered_list', 'bullet_list'],
-    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
-    ['link', 'image'],
-    ['text_color', 'background_color'],
-    ['align_left', 'align_center', 'align_right', 'align_justify'],
-  ];
 
   constructor(
     public dialog: MatDialog,
@@ -40,7 +27,6 @@ export class CadastrarDenunciasComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.editor = new Editor();
     this.emulaForm();
 
     //this.controller.generateNumberProtocol('denuncias');

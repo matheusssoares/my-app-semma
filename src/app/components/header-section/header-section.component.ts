@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CadastrarDenunciasComponent } from '../cadastrar-denuncias/cadastrar-denuncias.component';
 import { CadastrarUsuariosComponent } from '../cadastrar-usuarios/cadastrar-usuarios.component';
+import { CadastrarRifasComponent } from '../cadastrar-rifas/cadastrar-rifas.component';
 
 @Component({
   selector: 'app-header-section',
@@ -33,6 +34,13 @@ export class HeaderSectionComponent implements OnInit {
           this.dialog.open(CadastrarUsuariosComponent, {
             height: '360px',
             width: '670px',
+          })
+          break;
+
+        case 'rifas':
+          this.dialog.open(CadastrarRifasComponent, {
+            height: '800px',
+            width: '885px'
           })
           break;
     }

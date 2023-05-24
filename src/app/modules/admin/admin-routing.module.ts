@@ -10,6 +10,9 @@ import { DenunciasComponent } from 'src/app/views/denuncias/denuncias.component'
 import { UsuariosComponent } from 'src/app/views/usuarios/usuarios.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { RifasComponent } from 'src/app/views/rifas/rifas.component';
+import { CadastrarRifasComponent } from 'src/app/components/cadastrar-rifas/cadastrar-rifas.component';
+import { DetalhesRifasComponent } from 'src/app/views/detalhes-rifas/detalhes-rifas.component';
 
 const routes: Routes = [
   {
@@ -27,6 +30,14 @@ const routes: Routes = [
       {
         path: 'usuarios',
         component: UsuariosComponent
+      },
+      {
+        path: 'rifas',
+        component: RifasComponent
+      },
+      {
+        path: 'rifas/:key',
+        component: DetalhesRifasComponent
       }
     ]
   },
@@ -40,7 +51,10 @@ const routes: Routes = [
     CadastrarDenunciasComponent,
     UsuariosComponent,
     CadastrarUsuariosComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    RifasComponent,
+    CadastrarRifasComponent,
+    DetalhesRifasComponent
   ],
   imports: [RouterModule.forChild(routes), SharedModule, MaterialModule],
   exports: [RouterModule],
