@@ -16,6 +16,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,

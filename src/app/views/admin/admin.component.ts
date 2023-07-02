@@ -59,11 +59,10 @@ export class AdminComponent implements OnInit {
   }
 
   navigate(route: string) {
-    debugger
    if(route == 'RIFAS/SORTEIOS') {
      this.global.router.navigateByUrl('admin/rifas');
-   } else if (route == 'SOLICITAÇÕES') {
-    this.global.router.navigateByUrl('admin/solicitacoes');
+   } else if (route == 'COLABORADORES') {
+    this.global.router.navigateByUrl('admin/colaboradores');
    } else if (route == 'FISCALIZAÇÕES'){
     this.global.router.navigateByUrl('admin/fiscalizacoes');
    } else if (route == 'SERVIÇOS') {

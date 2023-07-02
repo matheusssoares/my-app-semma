@@ -13,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
 import { RifasComponent } from 'src/app/views/rifas/rifas.component';
 import { CadastrarRifasComponent } from 'src/app/components/cadastrar-rifas/cadastrar-rifas.component';
 import { DetalhesRifasComponent } from 'src/app/views/detalhes-rifas/detalhes-rifas.component';
+import { ColaboradoresComponent } from 'src/app/views/colaboradores/colaboradores.component';
+import { CadastrarColaboradoresComponent } from 'src/app/components/cadastrar-colaboradores/cadastrar-colaboradores.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,10 @@ const routes: Routes = [
       {
         path: 'rifas/:key',
         component: DetalhesRifasComponent
+      },
+      {
+        path: 'colaboradores',
+        component: ColaboradoresComponent
       }
     ]
   },
@@ -54,7 +60,9 @@ const routes: Routes = [
     EditarUsuarioComponent,
     RifasComponent,
     CadastrarRifasComponent,
-    DetalhesRifasComponent
+    DetalhesRifasComponent,
+    ColaboradoresComponent,
+    CadastrarColaboradoresComponent
   ],
   imports: [RouterModule.forChild(routes), SharedModule, MaterialModule],
   exports: [RouterModule],
